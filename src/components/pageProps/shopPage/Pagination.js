@@ -14,8 +14,10 @@ function Items({ currentItems }) {
             <Product
               _id={item._id}
               img={item.images.image1}
+              img2={item.images.image2}
+              img3={item.images.image3}
               productName={item.name}
-              // price={item.price}
+              price={item.price}
               type={item.type}
               // badge={item.badge}
               des={item.desc}

@@ -1,27 +1,41 @@
 import React from "react";
-import { SplOfferData } from "../../../constants";
 
-const ProductsOnSale = () => {
+const ProductsOnSale = ({ productInfo }) => {
   return (
     <div>
       <h3 className="font-titleFont text-xl font-semibold mb-6 underline underline-offset-4 decoration-[1px]">
-        Products on sale
+        Detail Products
       </h3>
+
       <div className="flex flex-col gap-2">
-        {SplOfferData.map((item) => (
+        {productInfo.img2 && (
           <div
-            key={item._id}
+            key={productInfo._id}
             className="flex items-center gap-4 border-b-[1px] border-b-gray-300 py-2"
           >
             <div>
-              <img className="w-24" src={item.img} alt={item.img} />
-            </div>
-            <div className="flex flex-col gap-2 font-titleFont">
-              <p className="text-base font-medium">{item.productName}</p>
-              <p className="text-sm font-semibold">${item.price}</p>
+              <img
+                className="w-24"
+                src={productInfo.img2}
+                alt={productInfo.img2}
+              />
             </div>
           </div>
-        ))}
+        )}
+        {productInfo.img3 && (
+          <div
+            key={productInfo._id}
+            className="flex items-center gap-4 border-b-[1px] border-b-gray-300 py-2"
+          >
+            <div>
+              <img
+                className="w-24"
+                src={productInfo.img3}
+                alt={productInfo.img3}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
