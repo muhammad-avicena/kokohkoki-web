@@ -1,11 +1,18 @@
 import logo from "./logoKokohkoki.png";
 import logoLight from "./logoLight.png";
 import bannerImgOne from "./banner/bannerImgOne.webp";
+import newArrivalBanner from "./banner/newArrivalBanner.png";
 import bannerImgTwo from "./banner/bannerImgTwo.webp";
 import bannerImgThree from "./banner/bannerImgThree.webp";
 import saleImgOne from "./sale/saleImgOne.webp";
 import saleImgTwo from "./sale/saleImgTwo.webp";
 import saleImgThree from "./sale/saleImgThree.webp";
+import dragonSeriesBanner from "./sale/dragonSeriesBanner.png";
+import premiumSeriesBanner from "./sale/premiumSeriesBanner.png";
+import specialGradeBanner from "./sale/specialGradeBanner.png";
+import superCuteSeriesBanner from "./sale/superCuteSeriesBanner.png";
+import superExclusiveSeriesBanner from "./sale/superExclusiveSeriesBanner.png";
+import uniqueSeriesBanner from "./sale/uniqueSeriesBanner.png";
 // ============== Products Start here ====================
 // New Arrivals
 import newArrOne from "./products/newArrival/newArrOne.webp";
@@ -34,12 +41,19 @@ import emptyCart from "../images/emptyCart.png";
 export {
   logo,
   logoLight,
+  newArrivalBanner,
   bannerImgOne,
   bannerImgTwo,
   bannerImgThree,
   saleImgOne,
   saleImgTwo,
   saleImgThree,
+  dragonSeriesBanner,
+  premiumSeriesBanner,
+  specialGradeBanner,
+  superCuteSeriesBanner,
+  superExclusiveSeriesBanner,
+  uniqueSeriesBanner,
   // ===================== Products start here ============
   // New Arrivals
   newArrOne,
