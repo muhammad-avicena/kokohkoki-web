@@ -70,12 +70,12 @@ const Contact = () => {
         <p className="pb-20 w-96 font-medium text-green-500">{successMsg}</p>
       ) : (
         <form className="pb-20">
-          <h1 className="font-titleFont font-semibold text-3xl">
+          <h1 className="font-titleFont text-rose-500 font-semibold text-3xl">
             Fill up a Form
           </h1>
           <div className="w-[500px] h-auto py-6 flex flex-col gap-6">
             <div>
-              <p className="text-base font-titleFont font-semibold px-2">
+              <p className="text-base text-white  font-titleFont font-semibold px-2">
                 Name
               </p>
               <input
@@ -93,7 +93,7 @@ const Contact = () => {
               )}
             </div>
             <div>
-              <p className="text-base font-titleFont font-semibold px-2">
+              <p className="text-base text-white font-titleFont font-semibold px-2">
                 Email
               </p>
               <input
@@ -111,7 +111,7 @@ const Contact = () => {
               )}
             </div>
             <div>
-              <p className="text-base font-titleFont font-semibold px-2">
+              <p className="text-base text-white font-titleFont font-semibold px-2">
                 Messages
               </p>
               <textarea
@@ -132,9 +132,9 @@ const Contact = () => {
             </div>
             <button
               onClick={handlePost}
-              className="w-44 bg-primeColor text-gray-200 h-10 font-titleFont text-base tracking-wide font-semibold hover:bg-black hover:text-white duration-200"
+              className="w-44 bg-rose-500 text-gray-200 h-10 font-titleFont text-base tracking-wide font-semibold hover:bg-black hover:text-white duration-200"
             >
-              Post
+              Send
             </button>
           </div>
         </form>

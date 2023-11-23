@@ -10,9 +10,8 @@ import ItemCard from "./ItemCard";
 const Cart = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.orebiReducer.products);
-  console.log(products)
   const [totalAmt, setTotalAmt] = useState("");
-  // const [shippingCharge, setShippingCharge] = useState(100000);
+
   useEffect(() => {
     let price = 0;
     products.map((item) => {
@@ -22,16 +21,35 @@ const Cart = () => {
     setTotalAmt(price);
   }, [products]);
 
-  // Total shipping price
-  // useEffect(() => {
-  //   if (totalAmt <= 100000) {
-  //     setShippingCharge(50000);
-  //   } else if (totalAmt <= 400) {
-  //     setShippingCharge(25);
-  //   } else if (totalAmt > 401) {
-  //     setShippingCharge(20);
-  //   }
-  // }, [totalAmt]);
+  const formatPrice = Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+  }).format(totalAmt);
+
+  const redirectToWhatsApp = () => {
+    const phoneNumber = "+6281227057176";
+    const productLines = products
+      .map((item, index) => {
+        return `*${index + 1}. ${item.name} | ${item.quantity} qty | Rp. ${
+          item.price
+        }*`;
+      })
+      .join("\n");
+    const totalAmtText = `Total price Rp. *${formatPrice}*`;
+
+    const message = `Hello, I'm interested in the products in my cart. Please assist with the checkout process. Thank you !
+    
+    ${productLines}
+
+    ${totalAmtText}
+    `;
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+
+    window.open(whatsappURL, "_blank");
+  };
+
   return (
     <div className="max-w-container mx-auto px-4">
       <Breadcrumbs title="Cart" />
@@ -75,31 +93,20 @@ const Cart = () => {
             <div className="w-96 flex flex-col gap-4">
               <h1 className="text-2xl font-semibold text-right">Cart totals</h1>
               <div>
-                {/* <p className="flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium">
-                  Subtotal
-                  <span className="font-semibold tracking-wide font-titleFont">
-                    Rp. {totalAmt}
-                  </span>
-                </p> */}
-                {/* <p className="flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium">
-                  Shipping Charge
-                  <span className="font-semibold tracking-wide font-titleFont">
-                    Rp. {shippingCharge}
-                  </span>
-                </p> */}
                 <p className="flex items-center justify-between border-[1px] border-gray-400 py-1.5 text-lg px-4 font-medium">
                   Total
                   <span className="font-bold tracking-wide text-lg font-titleFont">
-                    Rp. {totalAmt}
+                    {formatPrice}
                   </span>
                 </p>
               </div>
               <div className="flex justify-end">
-                <Link to="/paymentgateway">
-                  <button className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300">
-                    Proceed to Checkout
-                  </button>
-                </Link>
+                <button
+                  onClick={redirectToWhatsApp}
+                  className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300"
+                >
+                  Proceed to Checkout
+                </button>
               </div>
             </div>
           </div>
@@ -124,9 +131,9 @@ const Cart = () => {
             </h1>
             <p className="text-sm text-center px-10 -mt-2">
               Your Shopping cart lives to serve. Give it purpose - fill it with
-              books, electronics, videos, etc. and make it happy.
+              beautiful fish. and make it happy.
             </p>
-            <Link to="/shop">
+            <Link to="/">
               <button className="bg-primeColor rounded-md cursor-pointer hover:bg-black active:bg-gray-900 px-8 py-2 font-titleFont font-semibold text-lg text-gray-200 hover:text-white duration-300">
                 Continue Shopping
               </button>
