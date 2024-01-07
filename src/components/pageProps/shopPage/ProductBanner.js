@@ -31,8 +31,8 @@ const ProductBanner = ({ itemsPerPageFromBanner }) => {
         <span
           className={`${
             girdViewActive
-              ? "bg-primeColor text-white"
-              : "border-[1px] border-gray-300 text-[#737373]"
+              ? "bg-black text-white"
+              : "border-[1px] border-gray-300 text-white"
           } w-8 h-8 text-lg flex items-center justify-center cursor-pointer gridView`}
         >
           <BsGridFill />
@@ -40,8 +40,8 @@ const ProductBanner = ({ itemsPerPageFromBanner }) => {
         <span
           className={`${
             listViewActive
-              ? "bg-primeColor text-white"
-              : "border-[1px] border-gray-300 text-[#737373]"
+              ? "bg-black text-white"
+              : "border-[1px] border-gray-300 text-white"
           } w-8 h-8 text-base flex items-center justify-center cursor-pointer listView`}
         >
           <ImList />
@@ -54,7 +54,7 @@ const ProductBanner = ({ itemsPerPageFromBanner }) => {
                             Right Part STart here
         ======================================================== */}
       <div className="flex items-center gap-2 md:gap-6 mt-4 md:mt-0">
-        <div className="flex items-center gap-2 text-base text-[#767676] relative">
+        {/* <div className="flex items-center gap-2 text-base text-[#767676] relative">
           <label className="block">Sort by:</label>
           <select
             // onChange={(e) => setSelected(e.target.value)}
@@ -67,8 +67,8 @@ const ProductBanner = ({ itemsPerPageFromBanner }) => {
           <span className="absolute text-sm right-2 md:right-4 top-2.5">
             <GoTriangleDown />
           </span>
-        </div>
-        <div className="flex items-center gap-2 text-[#767676] relative">
+        </div> */}
+        <div className="flex items-center gap-2 text-white relative">
           <label className="block">Show:</label>
           <select
             onChange={(e) => itemsPerPageFromBanner(+e.target.value)}
@@ -79,7 +79,7 @@ const ProductBanner = ({ itemsPerPageFromBanner }) => {
             <option value="20">20</option>
             <option value="30">30</option>
           </select>
-          <span className="absolute text-sm right-3 top-2.5">
+          <span className="absolute text-black text-sm right-3 top-2.5">
             <GoTriangleDown />
           </span>
         </div>

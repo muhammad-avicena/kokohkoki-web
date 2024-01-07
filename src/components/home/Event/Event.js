@@ -7,12 +7,12 @@ import SamplePrevArrow from "./SamplePrevArrow";
 import axios from "axios";
 import BASE_URL from "../../../config/config";
 
-const NewArrivals = () => {
+const Event = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`${BASE_URL}/fish?isNewArrival=true&sort=asc`)
+      .get(`${BASE_URL}/fish?isEvent=true&sort=asc`)
       .then((response) => {
         setProducts(response.data.data);
       })
@@ -21,7 +21,6 @@ const NewArrivals = () => {
       });
   }, []);
 
-  console.log(products);
 
   const settings = {
     infinite: true,
@@ -87,4 +86,4 @@ const NewArrivals = () => {
   );
 };
 
-export default NewArrivals;
+export default Event;

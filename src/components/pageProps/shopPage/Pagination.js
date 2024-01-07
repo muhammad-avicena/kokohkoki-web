@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ReactPaginate from "react-paginate";
 import Product from "../../home/Products/Product";
-// import { paginationItems } from "../../../constants";
 import BASE_URL from "../../../config/config";
 
 function Items({ currentItems }) {
@@ -16,11 +15,12 @@ function Items({ currentItems }) {
               img={item.images.image1}
               img2={item.images.image2}
               img3={item.images.image3}
-              productName={item.name}
+              name={item.name}
               price={item.price}
+              gender={item.gender}
               type={item.type}
               // badge={item.badge}
-              des={item.desc}
+              desc={item.desc}
             />
           </div>
         ))}
@@ -29,18 +29,15 @@ function Items({ currentItems }) {
 }
 
 const Pagination = ({ itemsPerPage }) => {
-  // Here we use item offsets; we could also use page offsets
-  // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
   const [items, setItems] = useState([]);
   const [itemStart, setItemStart] = useState(1);
 
-  function fetchDataFish() {
+  async function fetchDataFish() {
     return axios
       .get(`${BASE_URL}/fish`)
       .then((response) => {
-        const items = response.data.data;
-        return items;
+        setItems(response.data.data);
       })
       .catch((error) => {
         console.error(error);
@@ -48,17 +45,10 @@ const Pagination = ({ itemsPerPage }) => {
   }
 
   useEffect(() => {
-    fetchDataFish()
-      .then((fetchedItems) => {
-        setItems(fetchedItems);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    fetchDataFish();
   }, []);
 
   const endOffset = itemOffset + itemsPerPage;
-  //   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = items.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(items.length / itemsPerPage);
 
@@ -66,9 +56,9 @@ const Pagination = ({ itemsPerPage }) => {
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
     setItemOffset(newOffset);
-    // console.log(
-    //   `User requested page number ${event.selected}, which is offset ${newOffset},`
-    // );
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset},`
+    );
     setItemStart(newOffset);
   };
   // Simulate fetching items from another resources.
@@ -94,7 +84,7 @@ const Pagination = ({ itemsPerPage }) => {
           activeClassName="bg-black text-white"
         />
 
-        <p className="text-base font-normal text-lightText">
+        <p className="text-base font-normal text-white">
           Products from {itemStart === 0 ? 1 : itemStart} to {endOffset} of{" "}
           {items.length}
         </p>

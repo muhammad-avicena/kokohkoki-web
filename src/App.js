@@ -17,7 +17,7 @@ import SignUp from "./pages/Account/SignUp";
 import Cart from "./pages/Cart/Cart";
 import Contact from "./pages/Contact/Contact";
 import Home from "./pages/Home/Home";
-import Journal from "./pages/Journal/Journal";
+import Shipping from "./pages/Shipping/Shipping";
 import Offer from "./pages/Offer/Offer";
 import Payment from "./pages/payment/Payment";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
@@ -45,7 +45,7 @@ const router = createBrowserRouter(
         <Route path="/shop" element={<Shop />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
-        <Route path="/journal" element={<Journal />}></Route>
+        <Route path="/shipping" element={<Shipping />}></Route>
         {/* ==================== Header Navlink End here ===================== */}
         <Route path="/offer" element={<Offer />}></Route>
         <Route path="/product/:_id" element={<ProductDetails />}></Route>
@@ -60,7 +60,7 @@ const router = createBrowserRouter(
 
 function App() {
   return (
-    <div className="font-bodyFont">
+    <div className="font-bodyFont bg-primeColor">
       <RouterProvider router={router} />
     </div>
   );
